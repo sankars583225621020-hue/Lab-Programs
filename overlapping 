@@ -1,0 +1,39 @@
+import java.util.*;
+
+class Solution {
+    
+    public int overlapInt(int[][] arr) {
+        int n = arr.length;
+        
+        int[] start = new int[n];
+        int[] end = new int[n];
+        
+        // Store start and end times separately
+        for (int i = 0; i < n; i++) {
+            start[i] = arr[i][0];
+            end[i] = arr[i][1];
+        }
+        
+        // Sort both arrays
+        Arrays.sort(start);
+        Arrays.sort(end);
+        
+        int i = 0, j = 0;
+        int count = 0;
+        int maxCount = 0;
+        
+        // Sweep line algorithm
+        while (i < n && j < n) {
+            if (start[i] <= end[j]) {
+                count++;
+                maxCount = Math.max(maxCount, count);
+                i++;
+            } else {
+                count--;
+                j++;
+            }
+        }
+        
+        return maxCount;
+    }
+}
