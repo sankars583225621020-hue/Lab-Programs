@@ -1,0 +1,47 @@
+I am learning Object-Oriented Programming concepts in Java and I am trying to understand the difference between Method Overloading and Method Overriding.
+
+My goal is to clearly understand how Java decides which method to call at compile time and runtime.
+
+Below is a simple program I tried:
+
+class Parent {
+    void show() {
+        System.out.println("Parent show method");
+    }
+}
+
+class Child extends Parent {
+
+    void show() {
+        System.out.println("Child show method");
+    }
+
+    void show(int a) {
+        System.out.println("Overloaded method with parameter: " + a);
+    }
+}
+
+public class Test {
+    public static void main(String[] args) {
+        Parent obj = new Child();
+        obj.show();
+    }
+}
+
+Expected Result:
+I expected Java to call the parent class method because the reference type is Parent.
+
+Actual Result:
+The child class method is getting executed.
+
+My doubts are:
+
+1. Why is the child method called instead of the parent method?
+2. How does runtime polymorphism work in this case?
+3. At what stage does method overloading get resolved?
+4. Can method overriding happen without inheritance?
+5. What are the exact rules Java follows to choose the correct method?
+
+I would appreciate a clear explanation of compile-time vs runtime method binding with simple examples.
+
+Thank you.
